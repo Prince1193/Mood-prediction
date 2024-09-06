@@ -1,0 +1,214 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Mood Prediction</h1>
+        <form id="predictionForm">
+            <label for="user_id">User ID:</label>
+            <input type="number" id="user_id" name="user_id" required><br><br>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required><br><br>
+
+            <label for="steps">Steps:</label>
+            <input type="number" id="steps" name="steps" step="any" required><br><br>
+
+            <label for="calories_burned">Calories Burned:</label>
+            <input type="number" id="calories_burned" name="calories_burned" step="any" required><br><br>
+
+            <label for="distance_km">Distance (km):</label>
+            <input type="number" id="distance_km" name="distance_km" step="any" required><br><br>
+
+            <label for="active_minutes">Active Minutes:</label>
+            <input type="number" id="active_minutes" name="active_minutes" required><br><br>
+
+            <label for="sleep_hours">Sleep Hours:</label>
+            <input type="number" id="sleep_hours" name="sleep_hours" step="any" required><br><br>
+
+            <label for="heart_rate_avg">Heart Rate Avg:</label>
+            <input type="number" id="heart_rate_avg" name="heart_rate_avg" required><br><br>
+
+            <label for="workout_type">Workout Type:</label>
+            <select id="workout_type" name="workout_type" required>
+                <option value="Walking">Walking</option>
+                <option value="Cycling">Cycling</option>
+                <option value="Swimming">Swimming</option>
+                <option value="Gym Workout">Gym Workout</option>
+                <option value="Running">Running</option>
+            </select><br><br>
+
+            <label for="weather_conditions">Weather Conditions:</label>
+            <select id="weather_conditions" name="weather_conditions" required>
+                <option value="Clear">Clear</option>
+                <option value="Fog">Fog</option>
+                <option value="Snow">Snow</option>
+                <option value="Rain">Rain</option>
+            </select><br><br>
+
+            <label for="location">Location:</label>
+            <select id="location" name="location" required>
+                <option value="Park">Park</option>
+                <option value="Office">Office</option>
+                <option value="Home">Home</option>
+                <option value="Gym">Gym</option>
+                <option value="Other">Other</option>
+            </select><br><br>
+
+            <button type="submit">Predict</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script>
+        document.getElementById('predictionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            fetch('/predict', {
+                method: 'POST',
+                body: new URLSearchParams(data),
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.mood_prediction) {
+                    document.getElementById('result').innerText = 'Mood Prediction: ' + result.mood_prediction;
+                } else if (result.error) {
+                    document.getElementById('result').innerText = 'Error: ' + result.error;
+                } else {
+                    document.getElementById('result').innerText = 'Unexpected response format.';
+                }
+            })
+            .catch(error => {
+                document.getElementById('result').innerText = 'Error: ' + error;
+            });
+        });
+    </script>
+    
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Mood Prediction</h1>
+        <div class="form-container">
+            <form id="predictionForm">
+                <div class="form-row">
+                    <div>
+                        <label for="user_id">User ID:</label>
+                        <input type="number" id="user_id" name="user_id" required>
+                    </div>
+                    <div>
+                        <label for="date">Date:</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="steps">Steps:</label>
+                        <input type="number" id="steps" name="steps" step="any" required>
+                    </div>
+                    <div>
+                        <label for="calories_burned">Calories Burned:</label>
+                        <input type="number" id="calories_burned" name="calories_burned" step="any" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="distance_km">Distance (km):</label>
+                        <input type="number" id="distance_km" name="distance_km" step="any" required>
+                    </div>
+                    <div>
+                        <label for="active_minutes">Active Minutes:</label>
+                        <input type="number" id="active_minutes" name="active_minutes" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="sleep_hours">Sleep Hours:</label>
+                        <input type="number" id="sleep_hours" name="sleep_hours" step="any" required>
+                    </div>
+                    <div>
+                        <label for="heart_rate_avg">Heart Rate Avg:</label>
+                        <input type="number" id="heart_rate_avg" name="heart_rate_avg" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="workout_type">Workout Type:</label>
+                        <select id="workout_type" name="workout_type" required>
+                            <option value="Walking">Walking</option>
+                            <option value="Cycling">Cycling</option>
+                            <option value="Swimming">Swimming</option>
+                            <option value="Gym Workout">Gym Workout</option>
+                            <option value="Running">Running</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="weather_conditions">Weather Conditions:</label>
+                        <select id="weather_conditions" name="weather_conditions" required>
+                            <option value="Clear">Clear</option>
+                            <option value="Fog">Fog</option>
+                            <option value="Snow">Snow</option>
+                            <option value="Rain">Rain</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div>
+                        <label for="location">Location:</label>
+                        <select id="location" name="location" required>
+                            <option value="Park">Park</option>
+                            <option value="Office">Office</option>
+                            <option value="Home">Home</option>
+                            <option value="Gym">Gym</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit">Predict</button>
+            </form>
+        </div>
+        <div id="result"></div>
+    </div>
+    <script>
+        document.getElementById('predictionForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            
+            fetch('/predict', {
+                method: 'POST',
+                body: new URLSearchParams(data),
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.mood_prediction) {
+                    document.getElementById('result').innerText = 'Predicted Mood: ' + result.mood_prediction;
+                } else if (result.error) {
+                    document.getElementById('result').innerText = 'Error: ' + result.error;
+                } else {
+                    document.getElementById('result').innerText = 'Unexpected response format.';
+                }
+            })
+            .catch(error => {
+                document.getElementById('result').innerText = 'Error: ' + error;
+            });
+        });
+    </script>
+</body>
+</html>

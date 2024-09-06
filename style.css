@@ -1,0 +1,91 @@
+/* Set the background color for the entire page */
+body {
+    background-color: #121212; /* Darker gray background */
+    color: #ffffff; /* White text color for contrast */
+    font-family: Arial, sans-serif; /* Font style */
+    margin: 0;
+    padding: 0;
+}
+
+/* Title positioning */
+h1 {
+    position: absolute;
+    top: 30px;
+    left: 20px;
+    margin: 0;
+    font-size: 2em; /* Adjust as needed */
+}
+
+/* Container styling */
+.container {
+    max-width: 800px;
+    margin: 80px auto 20px; /* Push down to avoid overlap with title */
+    padding: 20px;
+}
+
+/* Style for the form container */
+.form-container {
+    background-color: #121212; /* Slightly lighter gray for form background */
+    border: 2px solid #add8e6; /* Light blue border */
+    border-radius: 10px; /* Rounded corners */
+    padding: 20px;
+}
+
+/* Flexbox to arrange form fields in two columns */
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+/* Styling for each form field in the row */
+.form-row > div {
+    flex: 1;
+    min-width: 160px; /* Shortened field length */
+    margin-right: 20px;
+    margin-left: 10px
+}
+
+/* Remove right margin for the last column in each row */
+.form-row > div:last-child {
+    margin-right: 0;
+}
+
+/* Styling for form labels */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Styling for form inputs */
+input[type="number"],
+select,
+input[type="date"] { /* Added for date input styling */
+    width: 80%;
+    padding: 10px;
+    border: none;
+    border-bottom: 2px solid #cc5500; /* Darker orange underline */
+    background-color: #3e3e3e; /* Dark gray background for input fields */
+    color: #ffffff; /* White text */
+    border-radius: 5px;
+}
+
+/* Styling for form button */
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #cc5500; /* Darker orange background */
+    color: #ffffff; /* White text color */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer;
+}
+
+/* Hover effect for button */
+button:hover {
+    background-color: #b44c00; /* Even darker orange on hover */
+}
+
+/* Styling for result div */
+#result {
+    margin-top: 20px;
+}
